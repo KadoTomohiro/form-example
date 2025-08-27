@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { NgControl } from '@angular/forms';
 import { ValidationErrorMessageService } from './validation-error-message.service';
-import { ERROR_MESSAGE_LIST } from './validation-error-message.token';
+import {ERROR_MESSAGE_LIST, ValidationMessages} from './validation-error-message.token';
 
 describe('ValidationErrorMessageService', () => {
   let service: ValidationErrorMessageService;
-  let mockErrorMessageList: Record<string, string>;
+  let mockErrorMessageList: ValidationMessages;
 
   beforeEach(() => {
     mockErrorMessageList = {
@@ -23,7 +23,7 @@ describe('ValidationErrorMessageService', () => {
         { provide: ERROR_MESSAGE_LIST, useValue: mockErrorMessageList }
       ]
     });
-    
+
     service = TestBed.inject(ValidationErrorMessageService);
   });
 
@@ -65,11 +65,11 @@ describe('ValidationErrorMessageService', () => {
 
   it('should return error message with placeholder replacement for minlength', () => {
     const mockControl = {
-      errors: { 
-        minlength: { 
-          requiredLength: 5, 
-          actualLength: 3 
-        } 
+      errors: {
+        minlength: {
+          requiredLength: 5,
+          actualLength: 3
+        }
       }
     } as unknown as NgControl;
 
@@ -79,11 +79,11 @@ describe('ValidationErrorMessageService', () => {
 
   it('should return error message with placeholder replacement for maxlength', () => {
     const mockControl = {
-      errors: { 
-        maxlength: { 
-          maxLength: 10, 
-          actualLength: 15 
-        } 
+      errors: {
+        maxlength: {
+          maxLength: 10,
+          actualLength: 15
+        }
       }
     } as unknown as NgControl;
 
@@ -93,11 +93,11 @@ describe('ValidationErrorMessageService', () => {
 
   it('should return error message with placeholder replacement for min value', () => {
     const mockControl = {
-      errors: { 
-        min: { 
-          min: 0, 
-          actual: -1 
-        } 
+      errors: {
+        min: {
+          min: 0,
+          actual: -1
+        }
       }
     } as unknown as NgControl;
 
@@ -107,11 +107,11 @@ describe('ValidationErrorMessageService', () => {
 
   it('should return error message with placeholder replacement for max value', () => {
     const mockControl = {
-      errors: { 
-        max: { 
-          max: 100, 
-          actual: 150 
-        } 
+      errors: {
+        max: {
+          max: 100,
+          actual: 150
+        }
       }
     } as unknown as NgControl;
 
@@ -121,9 +121,9 @@ describe('ValidationErrorMessageService', () => {
 
   it('should return first error message when multiple errors exist', () => {
     const mockControl = {
-      errors: { 
+      errors: {
         required: true,
-        email: true 
+        email: true
       }
     } as unknown as NgControl;
 
@@ -148,7 +148,7 @@ describe('ValidationErrorMessageService', () => {
         { provide: ERROR_MESSAGE_LIST, useValue: null }
       ]
     });
-    
+
     service = TestBed.inject(ValidationErrorMessageService);
 
     const mockControl = {
@@ -161,8 +161,8 @@ describe('ValidationErrorMessageService', () => {
 
   it('should handle error value that is not an object', () => {
     const mockControl = {
-      errors: { 
-        customError: 'simple string value' 
+      errors: {
+        customError: 'simple string value'
       }
     } as unknown as NgControl;
 

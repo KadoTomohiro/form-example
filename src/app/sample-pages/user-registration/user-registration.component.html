@@ -1,0 +1,75 @@
+<div class="page-container">
+  <h2>👤 ユーザー登録フォーム</h2>
+  <p class="description">このページではユーザー登録用のローカルエラーメッセージが表示されます</p>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+    <div class="form-group">
+      <label for="username">ユーザー名:</label>
+      <input
+        id="username"
+        type="text"
+        formControlName="username"
+        [class.error]="isFieldInvalid('username')"
+        placeholder="ユーザー名を入力"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('username')">
+        {{ getFieldErrorMessage('username') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [class.error]="isFieldInvalid('email')"
+        placeholder="user@example.com"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('email')">
+        {{ getFieldErrorMessage('email') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">パスワード:</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        [class.error]="isFieldInvalid('password')"
+        placeholder="8文字以上の英数字"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('password')">
+        {{ getFieldErrorMessage('password') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">パスワード確認:</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        [class.error]="isFieldInvalid('confirmPassword')"
+        placeholder="パスワードを再入力"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('confirmPassword')">
+        {{ getFieldErrorMessage('confirmPassword') }}
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="registrationForm.invalid" class="submit-btn">
+      ✅ ユーザー登録
+    </button>
+  </form>
+
+  <div class="message-info">
+    <h3>🎯 このページのローカルエラーメッセージ特徴:</h3>
+    <ul>
+      <li>絵文字付きで視覚的に分かりやすい</li>
+      <li>具体的な入力例を含む</li>
+      <li>ユーザー登録に特化した文言</li>
+    </ul>
+  </div>
+</div>

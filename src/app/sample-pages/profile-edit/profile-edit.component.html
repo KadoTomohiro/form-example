@@ -1,0 +1,89 @@
+<div class="page-container">
+  <h2>✏️ プロフィール編集フォーム</h2>
+  <p class="description">このページではプロフィール編集用のローカルエラーメッセージが表示されます</p>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+    <div class="form-group">
+      <label for="displayName">表示名:</label>
+      <input
+        id="displayName"
+        type="text"
+        formControlName="displayName"
+        [class.error]="isFieldInvalid('displayName')"
+        placeholder="表示名（2-20文字）"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('displayName')">
+        {{ getFieldErrorMessage('displayName') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">連絡先メール:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [class.error]="isFieldInvalid('email')"
+        placeholder="連絡先メールアドレス"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('email')">
+        {{ getFieldErrorMessage('email') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bio">自己紹介:</label>
+      <textarea
+        id="bio"
+        formControlName="bio"
+        [class.error]="isFieldInvalid('bio')"
+        placeholder="自己紹介文（10-200文字）"
+        rows="4"
+      ></textarea>
+      <div class="error-message" *ngIf="isFieldInvalid('bio')">
+        {{ getFieldErrorMessage('bio') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">年齢:</label>
+      <input
+        id="age"
+        type="number"
+        formControlName="age"
+        [class.error]="isFieldInvalid('age')"
+        placeholder="年齢（13-120歳）"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('age')">
+        {{ getFieldErrorMessage('age') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">電話番号:</label>
+      <input
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        [class.error]="isFieldInvalid('phone')"
+        placeholder="03-1234-5678"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('phone')">
+        {{ getFieldErrorMessage('phone') }}
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="profileForm.invalid" class="submit-btn">
+      💾 プロフィール更新
+    </button>
+  </form>
+
+  <div class="message-info">
+    <h3>🎨 このページのローカルエラーメッセージ特徴:</h3>
+    <ul>
+      <li>プロフィール編集に特化した丁寧な文言</li>
+      <li>具体的な文字数制限や範囲を明示</li>
+      <li>編集作業に配慮した優しいトーン</li>
+    </ul>
+  </div>
+</div>

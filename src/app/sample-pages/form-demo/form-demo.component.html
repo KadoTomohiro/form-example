@@ -1,0 +1,70 @@
+<div class="form-container">
+  <h2>🏠 ホームページ - グローバルエラーメッセージデモ</h2>
+  <p class="description">このページではグローバルレベルのエラーメッセージが表示されます</p>
+
+  <form [formGroup]="demoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">名前:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [class.error]="isFieldInvalid('name')"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('name')">
+        {{ getFieldErrorMessage('name') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [class.error]="isFieldInvalid('email')"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('email')">
+        {{ getFieldErrorMessage('email') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">パスワード:</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        [class.error]="isFieldInvalid('password')"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('password')">
+        {{ getFieldErrorMessage('password') }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">年齢:</label>
+      <input
+        id="age"
+        type="number"
+        formControlName="age"
+        [class.error]="isFieldInvalid('age')"
+      >
+      <div class="error-message" *ngIf="isFieldInvalid('age')">
+        {{ getFieldErrorMessage('age') }}
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="demoForm.invalid">送信</button>
+  </form>
+
+  <div class="message-info">
+    <h3>🌍 グローバルエラーメッセージの特徴:</h3>
+    <ul>
+      <li>シンプルで汎用的な文言</li>
+      <li>どのページでも共通で使用可能</li>
+      <li>基本的なバリデーションに対応</li>
+    </ul>
+    <p><strong>他のページと比較して違いを確認してください！</strong></p>
+  </div>
+</div>
