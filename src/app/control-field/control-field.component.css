@@ -1,0 +1,46 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.error {
+  color: #ff6969;
+}
+
+.loader {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0.2rem 0;
+}
+
+.loader > div {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #333;
+  border-radius: 50%;
+  animation: loading 1s ease-in-out infinite;
+}
+
+.loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba(51,51,51, 80%);
+  }
+  50% {
+    background-color: rgba(51,51,51, 30%);
+  ;
+  }
+  100% {
+    background-color: rgba(51,51,51, 60%);
+
+  }
+}

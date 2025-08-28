@@ -1,0 +1,7 @@
+:host {
+  font-size: 0.7rem;
+}
+
+.control-outline > *{
+  border-left: 1px solid #555555;
+}

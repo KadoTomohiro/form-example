@@ -1,0 +1,13 @@
+<label appLabel [ngClass]="{error: hasError}">
+  {{label()}}
+</label>
+<ng-content></ng-content>
+@if (loading) {
+  <div class="loader">
+    <span></span><span></span><span></span>
+  </div>
+}
+@for (message of messages();let i = $index; track i) {
+  <span appLabel class="error">{{message}}</span>
+}
+
